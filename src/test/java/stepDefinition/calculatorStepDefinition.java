@@ -42,38 +42,39 @@ public class calculatorStepDefinition {
 		
 	}
 	
-	@Given("age height and weight")
-	public void age_height_and_weight() {
-	   WebElement age=driver.findElement(By.name("cage"));
-	   age.clear();
-	   age.sendKeys("27");
-	   WebElement height=driver.findElement(By.name("cheightmeter"));
-	   height.clear();
-	   height.sendKeys("150");
-	   WebElement weight=driver.findElement(By.name("ckg"));
-	   weight.clear();
-	   weight.sendKeys("57");
+	@Given("user enter age {string} and height {string} and weight {string}")
+	public void user_enter_age_and_height_and_weight(String age,String height, String weight) {
+		WebElement age1=driver.findElement(By.name("cage")); 
+		age1.clear();
+		age1.sendKeys(age);
+		WebElement height1=driver.findElement(By.name("cheightmeter"));
+		height1.clear();
+		height1.sendKeys(height); 
+		WebElement weight1=driver.findElement(By.name("ckg"));
+		weight1.clear();
+		weight1.sendKeys(weight);
 	}
-
-	@When("calculate the calories")
-	public void calculate_the_calories() {
-	   driver.findElement(By.xpath("//input[@value='Calculate']")).click();
-	}
-
-	@Then("capture the BMI Result value & Print it")
-	public void capture_the_BMI_Result_value_Print_it() {
-	   String BMIvalue=driver.findElement(By.xpath("//div[@class='bigtext']/b")).getText();
-	   String HealthyBMIRange = driver.findElement(By.xpath("//ul[@style='margin-left:8px;padding-left:8px;']/li[1]")).getText();
-	   String HealthyWeight = driver.findElement(By.xpath("//ul[@style='margin-left:8px;padding-left:8px;']/li[2]")).getText();
-	   String ponderalIndex = driver.findElement(By.xpath("//ul[@style='margin-left:8px;padding-left:8px;']/li[3]")).getText();
-	   System.out.println("BMI Value is:"+BMIvalue);
-	   System.out.println("Healthy BMI Range is:"+HealthyBMIRange); 
-	   System.out.println("Healthy Weight is:"+HealthyWeight);
-	   System.out.println("Ponderal Index is:"+ponderalIndex);
-	   driver.close();
-	}
-
-
+	
+			  
+	  @When("calculate the calories") 
+	  public void calculate_the_calories() {
+	  driver.findElement(By.xpath("//input[@value='Calculate']")).click();
+	  }
+	  
+	  @Then("capture the BMI Result value & Print it") 
+	  public void capture_the_BMI_Result_value_Print_it() { 
+	  String BMIvalue=driver.findElement(By.xpath("//div[@class='bigtext']/b")).getText();
+	  String HealthyBMIRange = driver.findElement(By.xpath("//ul[@style='margin-left:8px;padding-left:8px;']/li[1]")).getText(); 
+	  String HealthyWeight = driver.findElement(By.xpath("//ul[@style='margin-left:8px;padding-left:8px;']/li[2]")).getText(); 
+	  String ponderalIndex = driver.findElement(By.xpath("//ul[@style='margin-left:8px;padding-left:8px;']/li[3]")).getText();
+	  System.out.println("BMI Value is:"+BMIvalue);
+	  System.out.println("Healthy BMI Range is:"+HealthyBMIRange);
+	  System.out.println("Healthy Weight is:"+HealthyWeight);
+	  System.out.println("Ponderal Index is:"+ponderalIndex); 
+	  driver.close();
+	  }
+	  
+	 
 
 
 
